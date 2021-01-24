@@ -1,2 +1,5 @@
-# mark-prework-sample-corona
-Arya and Abdi's Corona Game
+# Corona
+
+Arya and Abdi's "Corona Game"
+
+Taken from [this repl.it](https://repl.it/@kaliqi/CoronaGame)
