@@ -16,6 +16,14 @@ def print_and_wait(msg):
   print(msg)
   time.sleep(1)
 
+def build_stats_report(china):
+  return "Population: " + (
+    str(f'{china["population"]:,}') + 
+    "\nInfected: " + 
+    str(f'{china["infected"]:,}') + 
+    "\nDead: " + 
+    str(f'{china["dead"]:,}'))
+
 #Game Begin Screen - Explaining how you lose
 def begin(): 
   #Global Data - Add Lockdown
@@ -38,8 +46,13 @@ def begin():
   print_and_wait("\nChina is currently facing an outbreak of COVID."
   "\nYou must contain the virus.")
   
-  print_and_wait("\nThese are the current stats for China:\nPopulation: "+ str(f'{china["population"]:,}') + "\nInfected: " + str(f'{china["infected"]:,}')+ "\nDead: " + str(f'{china["dead"]:,}'))
+
+
+  print_and_wait("\nThese are the current stats for China:\n" +
+   build_stats_report(china) )
   
+
+
   print_and_wait("\nEach round the # of infected will grow by the R rate."
   "\nIf COVID infects the entire population, you lose.")
   
