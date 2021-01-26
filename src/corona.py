@@ -12,6 +12,9 @@ answer_no = ["N","n","NO","no","No"]
 answer_repeat = ["R","r","REPEAT","Repeat","repeat"]
 
 
+def print_and_wait(msg):
+  print(msg)
+  time.sleep(1)
 
 #Game Begin Screen - Explaining how you lose
 def begin(): 
@@ -29,16 +32,17 @@ def begin():
   answer_lockdown = ["L", "l", "LOCKDOWN", "lockdown", "Lockdown"]
   
   username = input("\nWelcome, please enter your name\n> ")
-  print("\nHello " + username + "!\nWelcome to the Coronavirus Simulator.")
-  time.sleep(1)
-  print("\nChina is currently facing an outbreak of COVID."
+  
+  print_and_wait("\nHello " + username + "!\nWelcome to the Coronavirus Simulator.")
+  
+  print_and_wait("\nChina is currently facing an outbreak of COVID."
   "\nYou must contain the virus.")
-  time.sleep(1)
-  print("\nThese are the current stats for China:\nPopulation: "+ str(f'{china["population"]:,}') + "\nInfected: " + str(f'{china["infected"]:,}')+ "\nDead: " + str(f'{china["dead"]:,}'))
-  time.sleep(1)
-  print("\nEach round the # of infected will grow by the R rate."
+  
+  print_and_wait("\nThese are the current stats for China:\nPopulation: "+ str(f'{china["population"]:,}') + "\nInfected: " + str(f'{china["infected"]:,}')+ "\nDead: " + str(f'{china["dead"]:,}'))
+  
+  print_and_wait("\nEach round the # of infected will grow by the R rate."
   "\nIf COVID infects the entire population, you lose.")
-  time.sleep(1)
+  
   rules()
 
 
@@ -46,18 +50,14 @@ def begin():
 def rules():
   interest = input("\nAre you interested in finding out how you win? Y/N\n")
   if interest in answer_no:
-    print("\n....brave, best of luck!")
-    time.sleep(1)
+    print_and_wait("\n....brave, best of luck!")
     intro()
   if interest in answer_yes:  
-    print("\nFigure it out on your own.")
-    time.sleep(1)
-    print("There's a vaccine involved and an opportunity \nto implement a national lockdown.")
-    time.sleep(1)
+    print_and_wait("\nFigure it out on your own.")
+    print_and_wait("There's a vaccine involved and an opportunity \nto implement a national lockdown.")
     intro()
   else: 
-    print("\nRe-read the question... you didn't say Y or N!")
-    time.sleep(1)
+    print_and_wait("\nRe-read the question... you didn't say Y or N!")
     rules()
 
 #difficulty Selection
