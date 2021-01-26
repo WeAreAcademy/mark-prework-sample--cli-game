@@ -12,17 +12,36 @@ answer_no = ["N","n","NO","no","No"]
 answer_repeat = ["R","r","REPEAT","Repeat","repeat"]
 
 
-def print_and_wait(msg):
-  print(msg)
+def print_and_wait(message):
+  print(message)
   time.sleep(1)
 
-def build_stats_report(china):
-  return "Population: " + (
-    str(f'{china["population"]:,}') + 
-    "\nInfected: " + 
-    str(f'{china["infected"]:,}') + 
-    "\nDead: " + 
-    str(f'{china["dead"]:,}'))
+
+def format_number(number_to_print):
+  return str(f'{number_to_print:,}')
+
+
+
+# for each key value pair in the country dict, 
+#   format the line nicely
+#   add to collection of lines
+# concatenate all lines, finally
+# return that concatenated string
+
+def build_stats_report(country):
+
+  lines = [] 
+
+  for key in country.keys(): # ["population", "infected", "dead"]:
+    
+    label = key.title() #Capitalised!
+    value = format_number(country[key])
+    
+    line = "%s: %s" % (label, value)
+    lines.append(line)
+  
+  return "\n".join(lines)
+  # See also: map and list comprehensions
 
 #Game Begin Screen - Explaining how you lose
 def begin(): 
@@ -49,8 +68,8 @@ def begin():
 
 
   print_and_wait("\nThese are the current stats for China:\n" +
-   build_stats_report(china) )
-  
+  build_stats_report(china) )
+
 
 
   print_and_wait("\nEach round the # of infected will grow by the R rate."
